@@ -1974,7 +1974,7 @@ local function modifyStyles()
     Parker.Speed.Value = 1.5
     Parker.Color.Value = Color3.new(1,1,0)
     Parker.VisualName.Value = "Tenk"
-    Parker.H_FullHeat.Value = "H_TSpinCounterFront"
+    Parker.H_FullHeat.Value = "H_SpinCounterBack"
     Parker.Rush1.Value = "RPunch1"
     Parker.Rush2.Value = "RPunch2"
     Parker.Rush3.Value = "RPunch3"
@@ -1985,7 +1985,7 @@ local function modifyStyles()
     Parker.GrabStrike.Value = "T_CounterQuickstep"
     Parker.StanceStrike.Value = "ParkerDrop"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
-    Parker.H_Distanced.Value = "H_SpinCounterBack"
+    Parker.H_Distanced.Value = "H_TSpinCounterFront"
     Parker.Taunt.Value = "GoonTaunt"
     Parker.Grab.Value = "GGrab"
     Parker.H_GrabStanding.Value = "H_Piledriver"
