@@ -1916,7 +1916,7 @@ local function modifyStyles()
     Parker.GrabStrike.Value = "T_GuruParry"
     Parker.StanceStrike.Value = "ParkerDrop"
     Parker.BlockStrike.Value = "BTCounter"
-    Parker.H_Knocked.Value = "H_Swing
+    Parker.H_Knocked.Value = "H_Swing"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_FastFootworkBack"
     Parker.Grab.Value = "GGrab"
