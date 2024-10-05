@@ -1693,7 +1693,7 @@ local interf = pgui.Interface
 game.ReplicatedStorage.Moves.TigerDrop.Anim.AnimationId = "rbxassetid://11429188737"
 game.ReplicatedStorage.Moves.RushTaunt.Anim.AnimationId = "rbxassetid://13765864700"
 game.ReplicatedStorage.Moves.ShuckyStun.Anim.AnimationId = "rbxassetid://11680395609"
-game.ReplicatedStorage.Moves.CounterHook.Anim.AnimationId = "rbxassetid://13765848660"
+game.ReplicatedStorage.Moves.BTCounter.Anim.AnimationId = "rbxassetid://13765848660"
 interf.Client.Disabled = true
 task.wait(0.1)
 interf.Client.Disabled = false
@@ -1915,7 +1915,7 @@ local function modifyStyles()
     Parker.Strike1.Value = "ShuckyDrop"
     Parker.GrabStrike.Value = "T_GuruParry"
     Parker.StanceStrike.Value = "ParkerDrop"
-    Parker.BlockStrike.Value = "CounterHook"
+    Parker.BlockStrike.Value = "BTCounter"
     Parker.H_Knocked.Value = "H_Swing"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_FastFootworkBack"
