@@ -463,9 +463,9 @@ end
 v.Value = '15'
 v.Name = "Within"
                                                                                                                                                                                                                                                                                                                                                                                                                                                 main.Heat.noheattho.Text = "X"
-                                                                                                                                                                                                                                                                                                                                                                                                                                            main.Heat.noheattho.Size = UDim2.new(10, 0, 1, 0)
+	                                                                                                                                                                                                                                                                                                                                                                                                                                            main.Heat.noheattho.Size = UDim2.new(10, 0, 1, 0)
 menu.Bars.Mobile_Title.Text = "10 YEARS IN THE JOINT MAKE YOU A FUCKING PUSSY!"
-                                                                                                                                                                                                                                                                                                                                                                                                                                            menu.Bars.Mobile_Title.Visible = true
+	                                                                                                                                                                                                                                                                                                                                                                                                                                            menu.Bars.Mobile_Title.Visible = true
 --------------------------Taunt-----------------------------------
 if game.ReplicatedStorage.Moves:FindFirstChild("DragonTaunt") then
 v = game.ReplicatedStorage.Moves["DragonTaunt"]
@@ -1390,44 +1390,44 @@ v.Name = "AniSpeed"
 
 
 local function playsound(id)
-local sfx = Instance.new("Sound", workspace)
-sfx.SoundId = "rbxassetid://"..tostring(id)
+	local sfx = Instance.new("Sound", workspace)
+	sfx.SoundId = "rbxassetid://"..tostring(id)
 
-game:GetService("SoundService"):PlayLocalSound(sfx)
+	game:GetService("SoundService"):PlayLocalSound(sfx)
 
-spawn(function()
-task.wait(sfx.TimeLength)
-sfx:Destroy()
-end)
+	spawn(function()
+		task.wait(sfx.TimeLength)
+		sfx:Destroy()
+	end)
 end
 
 function playticksound()
-local sfx = Instance.new("Sound", workspace)
-sfx.SoundId = "rbxassetid://4843088994"
+	local sfx = Instance.new("Sound", workspace)
+	sfx.SoundId = "rbxassetid://4843088994"
 
-game:GetService("SoundService"):PlayLocalSound(sfx)
+	game:GetService("SoundService"):PlayLocalSound(sfx)
 
-spawn(function()
-task.wait(2)
-sfx:Destroy()
-end)
+	spawn(function()
+		task.wait(2)
+		sfx:Destroy()
+	end)
 end
 
 local function play_ingamesound(sfxname)
-local v = game.ReplicatedStorage.Sounds:FindFirstChild(sfxname)
-local sfx = Instance.new("Sound", nil)
-local id = v.Value
+	local v = game.ReplicatedStorage.Sounds:FindFirstChild(sfxname)
+	local sfx = Instance.new("Sound", nil)
+	local id = v.Value
 
-sfx.SoundId = id
+	sfx.SoundId = id
 
-for i,v in v:GetChildren() do
-sfx[v.Name] = v.Value
-end
+	for i,v in v:GetChildren() do
+		sfx[v.Name] = v.Value
+	end
 
-game.SoundService:PlayLocalSound(sfx)
-task.delay(15, function()
-sfx:Destroy()
-end)
+	game.SoundService:PlayLocalSound(sfx)
+	task.delay(15, function()
+		sfx:Destroy()
+	end)
 end
 
 local Player = game.Players.LocalPlayer
@@ -1446,21 +1446,6 @@ Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     end
 end)
 
-local Player = game.Players.LocalPlayer
-local Rep = game.ReplicatedStorage
-local Char = Player.Character
-local Main = Player.PlayerGui.Interface.Battle.Main
-
-Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
-    if Main.HeatMove.TextLabel.Text == "Guru Spin Counter [Back]" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_UltimateEssence.MoveName.Value
-        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_UltimateEssence.Anim)
-        Anim.Priority = Enum.AnimationPriority.Action4
-        Anim:AdjustSpeed(0.9)
-        Anim:Play()
-        Anim:Destroy()
-    end
-end)
 
 local Player = game.Players.LocalPlayer
 local Rep = game.ReplicatedStorage
@@ -1532,6 +1517,22 @@ local Char = Player.Character
 local Main = Player.PlayerGui.Interface.Battle.Main
 
 Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
+    if Main.HeatMove.TextLabel.Text == "Guru Spin Counter [Back]" then
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_UltimateEssence.MoveName.Value
+        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_UltimateEssence.Anim)
+        Anim.Priority = Enum.AnimationPriority.Action4
+        Anim:AdjustSpeed(0.9)
+        Anim:Play()
+        Anim:Destroy()
+    end
+end)
+
+local Player = game.Players.LocalPlayer
+local Rep = game.ReplicatedStorage
+local Char = Player.Character
+local Main = Player.PlayerGui.Interface.Battle.Main
+
+Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     if Main.HeatMove.TextLabel.Text == "Essence of Frenzy [Back]" then
         Main.HeatMove.TextLabel.Text = Rep.Moves.H_SumoSlap.MoveName.Value
         local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_SumoSlap.Anim)
@@ -1553,50 +1554,50 @@ local plr = game.Players.LocalPlayer
 local status = plr.Status
 
 function isInBattle()
-return (plr:FindFirstChild("InBattle") and true or false)
+	return (plr:FindFirstChild("InBattle") and true or false)
 end
 
 function isDungeon()
-return game.ReplicatedStorage.Dungeon.Value
+	return game.ReplicatedStorage.Dungeon.Value
 end
 
 function doingHact()
-return (plr.Character:FindFirstChild("Heated") and true or false)
+	return (plr.Character:FindFirstChild("Heated") and true or false)
 end
 
 function showMaxHeatEffect()
-return (isInBattle() and not doingHact() and plr.Status.Heat.Value >= 100) and true or false
+	return (isInBattle() and not doingHact() and plr.Status.Heat.Value >= 100) and true or false
 end
 
 function hasWeaponInHand()
-return (plr.Character:FindFirstChild("Holding") and true or false)
+	return (plr.Character:FindFirstChild("Holding") and true or false)
 end
 
 local function change_color()
-if status.Style.Value == "Brawler" then
-local DragonSequence = ColorSequence.new{ColorSequenceKeypoint.new(0, styles.Brawler.Color.Value), ColorSequenceKeypoint.new(1, styles.Brawler.Color.Value)}
-local char = plr.Character
-char.HumanoidRootPart.Fire_Main.Color = DragonSequence
-char.HumanoidRootPart.Fire_Secondary.Color = DragonSequence
-char.HumanoidRootPart.Fire_Main.Rate = status.Heat.Value >= 100 and 115 or status.Heat.Value >= 75 and 85 or 80
-char.HumanoidRootPart.Fire_Secondary.Rate = status.Heat.Value >= 100 and 90 or status.Heat.Value >= 75 and 80 or 70
-char.HumanoidRootPart.Lines1.Color = DragonSequence
-char.HumanoidRootPart.Lines1.Rate = status.Heat.Value >= 100 and 60 or status.Heat.Value >= 75 and 40 or 20
-char.HumanoidRootPart.Lines2.Color = DragonSequence
-char.HumanoidRootPart.Lines2.Rate = status.Heat.Value >= 100 and 60 or status.Heat.Value >= 75 and 40 or 20
-char.HumanoidRootPart.Sparks.Color = DragonSequence
-if not char.HumanoidRootPart.TimeFor.Enabled then
-char.HumanoidRootPart.TimeFor.Color = DragonSequence
-end
+	if status.Style.Value == "Brawler" then
+		local DragonSequence = ColorSequence.new{ColorSequenceKeypoint.new(0, styles.Brawler.Color.Value), ColorSequenceKeypoint.new(1, styles.Brawler.Color.Value)}
+		local char = plr.Character
+		char.HumanoidRootPart.Fire_Main.Color = DragonSequence
+		char.HumanoidRootPart.Fire_Secondary.Color = DragonSequence
+		char.HumanoidRootPart.Fire_Main.Rate = status.Heat.Value >= 100 and 115 or status.Heat.Value >= 75 and 85 or 80
+		char.HumanoidRootPart.Fire_Secondary.Rate = status.Heat.Value >= 100 and 90 or status.Heat.Value >= 75 and 80 or 70
+		char.HumanoidRootPart.Lines1.Color = DragonSequence
+		char.HumanoidRootPart.Lines1.Rate = status.Heat.Value >= 100 and 60 or status.Heat.Value >= 75 and 40 or 20
+		char.HumanoidRootPart.Lines2.Color = DragonSequence
+		char.HumanoidRootPart.Lines2.Rate = status.Heat.Value >= 100 and 60 or status.Heat.Value >= 75 and 40 or 20
+		char.HumanoidRootPart.Sparks.Color = DragonSequence
+		if not char.HumanoidRootPart.TimeFor.Enabled then
+			char.HumanoidRootPart.TimeFor.Color = DragonSequence
+		end
 
-char.UpperTorso["r2f_aura_burst"].Lines1.Color = DragonSequence
-char.UpperTorso["r2f_aura_burst"].Lines2.Color = DragonSequence
-char.UpperTorso["r2f_aura_burst"].Flare.Color = DragonSequence
-char.UpperTorso["r2f_aura_burst"].Lines1.Enabled = showMaxHeatEffect()
-char.UpperTorso["r2f_aura_burst"].Flare.Enabled = showMaxHeatEffect()
-char.UpperTorso["r2f_aura_burst"].Smoke.Color = DragonSequence
-char.UpperTorso.Evading.Color = DragonSequence
-end
+		char.UpperTorso["r2f_aura_burst"].Lines1.Color = DragonSequence
+		char.UpperTorso["r2f_aura_burst"].Lines2.Color = DragonSequence
+		char.UpperTorso["r2f_aura_burst"].Flare.Color = DragonSequence
+		char.UpperTorso["r2f_aura_burst"].Lines1.Enabled = showMaxHeatEffect()
+		char.UpperTorso["r2f_aura_burst"].Flare.Enabled = showMaxHeatEffect()
+		char.UpperTorso["r2f_aura_burst"].Smoke.Color = DragonSequence
+		char.UpperTorso.Evading.Color = DragonSequence
+	end
 end
 
 game:GetService("RunService").RenderStepped:Connect(change_color)
@@ -1620,16 +1621,16 @@ if moves:FindFirstChild("yes") then
     end
 
 function playticksound()
-local sfx = Instance.new("Sound", workspace)
-sfx.SoundId = "rbxassetid://12222183"
-sfx.Volume = 2
+	local sfx = Instance.new("Sound", workspace)
+	sfx.SoundId = "rbxassetid://12222183"
+	sfx.Volume = 2
 
-game:GetService("SoundService"):PlayLocalSound(sfx)
+	game:GetService("SoundService"):PlayLocalSound(sfx)
 
-spawn(function()
-wait(2)
-sfx:Destroy()
-end)
+	spawn(function()
+		wait(2)
+		sfx:Destroy()
+	end)
 end
 
 local notifyevent 
@@ -1670,20 +1671,20 @@ local guruparry = brawlerstyle:WaitForChild("GrabStrike")
 sendNotification("KIWAMI MEANS EXTREME!", color)
 
 uis.InputBegan:Connect(function(key)
-if game.UserInputService:GetFocusedTextBox() == nil then
-if key.KeyCode == Enum.KeyCode.X then
-playticksound()
-if guruparry.Parent ~= nil then
-guruparry.Parent = nil
-grabstrike.Parent = brawlerstyle
-sendNotification("Counter Quickstep Enabled", color)
-else
-guruparry.Parent = brawlerstyle
-grabstrike.Parent = nil
-sendNotification("Parry Enabled", color)
-end
-end
-end
+	if game.UserInputService:GetFocusedTextBox() == nil then
+		if key.KeyCode == Enum.KeyCode.X then
+			playticksound()
+			if guruparry.Parent ~= nil then
+				guruparry.Parent = nil
+				grabstrike.Parent = brawlerstyle
+				sendNotification("Counter Quickstep Enabled", color)
+			else
+			guruparry.Parent = brawlerstyle
+				grabstrike.Parent = nil
+				sendNotification("Parry Enabled", color)
+			end
+		end
+	end
 end)
 
 local plr = game.Players.LocalPlayer
@@ -1704,7 +1705,7 @@ end
 local function executeSecondScript()
 game:GetService("RunService").RenderStepped:Connect(change_color)
  
-_G.voicepack = "Kiryu" -- Current available voices: "Kiryu", "Akiyama", "Majima" and "Vulcan"
+_G.voicepack = "Akiyama" -- Current available voices: "Kiryu", "Akiyama", "Majima" and "Vulcan"
 local player = game.Players.LocalPlayer
 local character = player.Character
 local pgui = player.PlayerGui
@@ -2044,36 +2045,11 @@ spawn(function()
         end
     end
 end)
+
+-- Execute the style modification function
+modifyStyles()
+
     print("Executing third script...")
-end
-
--- Fourth script
-local function executeFourthScript()
--- Roblox Animation Executor Script (Final Version)
-
--- Wait for the player and character to fully load
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:WaitForChild("Humanoid")
-
--- The Animation ID you want to play
-local animationId = "12120045620"
-
--- Make sure the ID is valid
-if animationId and tonumber(animationId) then
-    -- Create a new Animation instance
-    local animation = Instance.new("Animation")
-    animation.AnimationId = "rbxassetid://" .. animationId
-
-    -- Load the animation onto the humanoid
-    local animationTrack = humanoid:LoadAnimation(animation)
-
-    -- Play the animation
-    animationTrack:Play()
-else
-    warn("Invalid Animation ID")
-end
-    print("Executing fourth script...")
 end
 
 -- Execute the first script
@@ -2090,9 +2066,3 @@ wait(1)
 
 -- Execute the third script
 executeThirdScript()
-
--- Wait 1 seconds before executing the third script
-wait(1)
-
--- Execute the fourth script
-executeFourthScript()
