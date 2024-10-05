@@ -2045,55 +2045,26 @@ spawn(function()
         end
     end
 end)
-    print("Executing second script...")
-end
-
--- Fourth script
-local function executeFourthScript()
--- Roblox Animation Executor Script (Final Version)
-
--- Wait for the player and character to fully load
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:WaitForChild("Humanoid")
-
--- The Animation ID you want to play
-local animationId = "12120045620"
-
--- Make sure the ID is valid
-if animationId and tonumber(animationId) then
-    -- Create a new Animation instance
-    local animation = Instance.new("Animation")
-    animation.AnimationId = "rbxassetid://" .. animationId
-
-    -- Load the animation onto the humanoid
-    local animationTrack = humanoid:LoadAnimation(animation)
-
-    -- Play the animation
-    animationTrack:Play()
-else
-    warn("Invalid Animation ID")
-end
-    print("Executing fourth script...")
+    print("Executing third script...")
 end
 
 -- Execute the first script
 executeFirstScript()
 
 -- Wait 1 seconds before executing the second script
-wait(2)
+wait(1)
 
 -- Execute the second script
 executeSecondScript()
 
 -- Wait 1 seconds before executing the third script
-wait(2)
+wait(1)
 
 -- Execute the third script
 executeThirdScript()
 
 -- Wait 1 seconds before executing the third script
-wait(2)
+wait(1)
 
 -- Execute the fourth script
 executeFourthScript()
