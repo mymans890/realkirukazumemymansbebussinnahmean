@@ -1908,7 +1908,7 @@ local UserInputService = game:GetService("UserInputService")
 -- Function to modify styles
 local function modifyStyles()
     -- Style 1
-    local Parker = ReplicatedStorage.Styles["Brawler"]:Clone()
+    local Parker = ReplicatedStorage.Styles["堂島の龍"]:Clone()
     Parker.Speed.Value = 1.5
     Parker.Color.Value = Color3.new(0,0.50,1)
     Parker.VisualName.Value = "Self-Taught Dragon"
@@ -1916,7 +1916,6 @@ local function modifyStyles()
     Parker.Strike1.Value = "ShuckyDrop"
     Parker.GrabStrike.Value = "T_GuruParry"
     Parker.StanceStrike.Value = "ParkerDrop"
-    Parker.H_Knocked.Value = "H_Swing"
     Parker.BlockStrike.Value = "BTCounter"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_FastFootworkBack"
