@@ -1693,7 +1693,8 @@ local interf = pgui.Interface
 game.ReplicatedStorage.Moves.TigerDrop.Anim.AnimationId = "rbxassetid://11429188737"
 game.ReplicatedStorage.Moves.RushTaunt.Anim.AnimationId = "rbxassetid://13765864700"
 game.ReplicatedStorage.Moves.ShuckyStun.Anim.AnimationId = "rbxassetid://11680395609"
-game.ReplicatedStorage.Moves.BTCounter.Anim.AnimationId = "rbxassetid://11224726767"
+game.ReplicatedStorage.Moves.CounterHook.Anim.AnimationId = "rbxassetid://13765848660"
+game.ReplicatedStorage.Moves.BStrike4.Anim.AnimationId = "rbxassetid://13765848660"
 interf.Client.Disabled = true
 task.wait(0.1)
 interf.Client.Disabled = false
@@ -1907,7 +1908,7 @@ local UserInputService = game:GetService("UserInputService")
 -- Function to modify styles
 local function modifyStyles()
     -- Style 1
-    local Parker = ReplicatedStorage.Styles["堂島の龍"]:Clone()
+    local Parker = ReplicatedStorage.Styles["Brawler"]:Clone()
     Parker.Speed.Value = 1.5
     Parker.Color.Value = Color3.new(0,0.50,1)
     Parker.VisualName.Value = "Self-Taught Dragon"
@@ -1915,12 +1916,13 @@ local function modifyStyles()
     Parker.Strike1.Value = "ShuckyDrop"
     Parker.GrabStrike.Value = "T_GuruParry"
     Parker.StanceStrike.Value = "ParkerDrop"
+    Parker.H_Knocked.Value = "H_Swing"
     Parker.BlockStrike.Value = "BTCounter"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_FastFootworkBack"
     Parker.Grab.Value = "GGrab"
     Parker.Throw.Value = "T_CounterQuickstep"
-    Parker.H_Fallen.Value = "H_FallenFinisher"
+    Parker.H_FallenDown.Value = "H_FallenFinisher"
     Parker.Name = "STD"
     Parker.Parent = ReplicatedStorage.Styles
 
@@ -2044,24 +2046,55 @@ spawn(function()
         end
     end
 end)
-
--- Execute the style modification function
-modifyStyles()
-
     print("Executing second script...")
+end
+
+-- Fourth script
+local function executeFourthScript()
+-- Roblox Animation Executor Script (Final Version)
+
+-- Wait for the player and character to fully load
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+-- The Animation ID you want to play
+local animationId = "12120045620"
+
+-- Make sure the ID is valid
+if animationId and tonumber(animationId) then
+    -- Create a new Animation instance
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. animationId
+
+    -- Load the animation onto the humanoid
+    local animationTrack = humanoid:LoadAnimation(animation)
+
+    -- Play the animation
+    animationTrack:Play()
+else
+    warn("Invalid Animation ID")
+end
+    print("Executing fourth script...")
 end
 
 -- Execute the first script
 executeFirstScript()
 
--- Wait 2 seconds before executing the second script
+-- Wait 1 seconds before executing the second script
 wait(2)
 
 -- Execute the second script
 executeSecondScript()
 
--- Wait 2 seconds before executing the third script
+-- Wait 1 seconds before executing the third script
 wait(2)
 
 -- Execute the third script
 executeThirdScript()
+
+-- Wait 1 seconds before executing the third script
+wait(2)
+
+-- Execute the fourth script
+executeFourthScript()
