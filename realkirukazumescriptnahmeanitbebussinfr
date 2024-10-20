@@ -1714,7 +1714,6 @@ animationTrack:AdjustSpeed(animationSpeed)
 animationTrack:Play()
 
 local player = game.Players.LocalPlayer
-
 -- Replace this ID with the sound ID you want to play
 local soundId = "rbxassetid://7837530737"  -- Example sound ID (Oof sound)
 
