@@ -774,91 +774,84 @@ v = game.ReplicatedStorage.Styles.Rush["Rush4"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = '龍Attack1'
+v.Value = '龍Attack2'
 v.Name = "Rush4"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Rush5") then
 v = game.ReplicatedStorage.Styles.Rush["Rush5"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = '龍Attack2'
+v.Value = 'BAttack3'
 v.Name = "Rush5"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Rush6") then
 v = game.ReplicatedStorage.Styles.Rush["Rush6"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = '龍Attack3'
+v.Value = 'BEvadeStrikeLeft'
 v.Name = "Rush6"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Rush7") then
 v = game.ReplicatedStorage.Styles.Rush["Rush7"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = '龍Attack1'
+v.Value = 'BEvadeStrikeRight'
 v.Name = "Rush7"
-if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Rush8") then
-v = game.ReplicatedStorage.Styles.Rush["Rush8"]
-else
-v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
-end
-v.Value = '龍Attack4'
-v.Name = "Rush8"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Strike2") then
 v = game.ReplicatedStorage.Styles.Rush["Strike2"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = 'RStrike2'
+v.Value = 'BStrike2'
 v.Name = "Strike2"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Strike3") then
 v = game.ReplicatedStorage.Styles.Rush["Strike3"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = '龍2Strike1'
+v.Value = 'BStrike2'
 v.Name = "Strike3"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Strike4") then
 v = game.ReplicatedStorage.Styles.Rush["Strike4"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = '龍Strike5'
+v.Value = 'BStrike2'
 v.Name = "Strike4"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Strike5") then
 v = game.ReplicatedStorage.Styles.Rush["Strike5"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = 'BStrike5'
+v.Value = 'BStrike2'
 v.Name = "Strike5"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Strike6") then
 v = game.ReplicatedStorage.Styles.Rush["Strike6"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = 'BStrike4'
+v.Value = 'BStrike2'
 v.Name = "Strike6"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Strike7") then
 v = game.ReplicatedStorage.Styles.Rush["Strike7"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = 'B2Strike4'
+v.Value = 'BStrike4'
 v.Name = "Strike7"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Strike8") then
 v = game.ReplicatedStorage.Styles.Rush["Strike8"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = 'B2Strike3'
+v.Value = 'RDashAttack'
 v.Name = "Strike8"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Strike9") then
 v = game.ReplicatedStorage.Styles.Rush["Strike9"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Rush)
 end
-v.Value = '龍2Strike4'
+v.Value = 'RDashAttack'
 v.Name = "Strike9"
 if game.ReplicatedStorage.Styles.Rush:FindFirstChild("Rush1") then
 v = game.ReplicatedStorage.Styles.Rush["Rush1"]
@@ -1437,15 +1430,17 @@ local Main = Player.PlayerGui.Interface.Battle.Main
 
 Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     if Main.HeatMove.TextLabel.Text == "Ultimate Essence" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_UltimateEssence.MoveName.Value
-        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_UltimateEssence.Anim)
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_Whirl.MoveName.Value
+        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_Whirl.Anim)
         Anim.Priority = Enum.AnimationPriority.Action4
-        Anim:AdjustSpeed(0.9)
         Anim:Play()
+        
+        -- Add a short delay before adjusting the speed
+        wait(0.1)
+        Anim:AdjustSpeed(0.6)  -- Attempt to change speed after loading
         Anim:Destroy()
     end
 end)
-
 
 local Player = game.Players.LocalPlayer
 local Rep = game.ReplicatedStorage
@@ -1485,28 +1480,15 @@ local Char = Player.Character
 local Main = Player.PlayerGui.Interface.Battle.Main
 
 Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
-    if Main.HeatMove.TextLabel.Text == "Essence of Whirl" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_KnockoutFront.MoveName.Value
-        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_KnockoutFront.Anim)
-        Anim.Priority = Enum.AnimationPriority.Action4
-        Anim:AdjustSpeed(0.9)
-        Anim:Play()
-        Anim:Destroy()
-    end
-end)
-
-local Player = game.Players.LocalPlayer
-local Rep = game.ReplicatedStorage
-local Char = Player.Character
-local Main = Player.PlayerGui.Interface.Battle.Main
-
-Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     if Main.HeatMove.TextLabel.Text == "Essence of Piledriver" then
         Main.HeatMove.TextLabel.Text = Rep.Moves.H_UltimateEssence.MoveName.Value
         local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_UltimateEssence.Anim)
         Anim.Priority = Enum.AnimationPriority.Action4
-        Anim:AdjustSpeed(2)
         Anim:Play()
+        
+        -- Add a short delay before adjusting the speed
+        wait(0.1)
+        Anim:AdjustSpeed(2.6)  -- Attempt to change speed after loading
         Anim:Destroy()
     end
 end)
@@ -1521,8 +1503,11 @@ Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
         Main.HeatMove.TextLabel.Text = Rep.Moves.H_UltimateEssence.MoveName.Value
         local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_UltimateEssence.Anim)
         Anim.Priority = Enum.AnimationPriority.Action4
-        Anim:AdjustSpeed(0.9)
         Anim:Play()
+              
+        -- Add a short delay before adjusting the speed
+        wait(0.1)
+        Anim:AdjustSpeed(2.7)  -- Attempt to change speed after loading
         Anim:Destroy()
     end
 end)
@@ -1691,13 +1676,42 @@ local plr = game.Players.LocalPlayer
 local pgui = plr.PlayerGui
 local interf = pgui.Interface
 
-game.ReplicatedStorage.Moves.TigerDrop.Anim.AnimationId = "rbxassetid://11429188737"
+game.ReplicatedStorage.Moves.TigerDrop.Anim.AnimationId = "rbxassetid://11528675185"
+game.ReplicatedStorage.Moves.TigerDrop.AniSpeed.Value = "3.1"
 game.ReplicatedStorage.Moves.RushTaunt.Anim.AnimationId = "rbxassetid://13765864700"
-game.ReplicatedStorage.Moves.ShuckyStun.Anim.AnimationId = "rbxassetid://11680395609"
-game.ReplicatedStorage.Moves.BTCounter.Anim.AnimationId = "rbxassetid://13765848660"
+game.ReplicatedStorage.Moves.ShuckyStun.Anim.AnimationId = "rbxassetid://12051777670"
+game.ReplicatedStorage.Moves.BTCounter.Anim.AnimationId = "rbxassetid://12481294601"
+game.ReplicatedStorage.Moves.BStrike5.Anim.AnimationId = "rbxassetid://11699264190"
+game.ReplicatedStorage.Moves.BStrike4.Anim.AnimationId = "rbxassetid://13785070193"
+game.ReplicatedStorage.Moves.H_Whirl.MoveName.Value = "Essence of The Dragon God"
+game.ReplicatedStorage.Moves:FindFirstChild("龍Strike5").Anim.AnimationId = "rbxassetid://13765848660"
 interf.Client.Disabled = true
 task.wait(0.1)
 interf.Client.Disabled = false
+
+local animationId = "rbxassetid://10928237540"
+local animationSpeed = 3 -- Change this value to set the desired speed
+
+-- Assign the AnimationId
+game.ReplicatedStorage.Moves.TigerDrop.Anim.AnimationId = animationId
+
+-- Load the animation
+local animation = Instance.new("Animation")
+animation.AnimationId = animationId
+
+-- Get the player's character and humanoid
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+-- Create an Animator if it doesn't exist
+local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
+
+-- Load the animation into the animator
+local animationTrack = animator:LoadAnimation(animation)
+
+-- Set the speed and play the animation
+animationTrack:AdjustSpeed(animationSpeed)
+animationTrack:Play()
     print("Executing first script...")
 end
 
@@ -1705,7 +1719,7 @@ end
 local function executeSecondScript()
 game:GetService("RunService").RenderStepped:Connect(change_color)
  
-_G.voicepack = "Akiyama" -- Current available voices: "Kiryu", "Akiyama", "Majima" and "Vulcan"
+_G.voicepack = "Kiryu" -- Current available voices: "Kiryu", "Akiyama", "Majima" and "Vulcan"
 local player = game.Players.LocalPlayer
 local character = player.Character
 local pgui = player.PlayerGui
@@ -1915,7 +1929,7 @@ local function modifyStyles()
     Parker.H_FullHeat.Value = "H_GUltimateEssence"
     Parker.Strike1.Value = "ShuckyDrop"
     Parker.GrabStrike.Value = "T_GuruParry"
-    Parker.StanceStrike.Value = "ParkerDrop"
+    Parker.StanceStrike.Value = "CounterHook"
     Parker.BlockStrike.Value = "BTCounter"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_FastFootworkBack"
@@ -1983,7 +1997,7 @@ local function modifyStyles()
     Parker.Strike1.Value = "DerekCharge"
     Parker.BlockStrike.Value = "ShuckyStun"
     Parker.H_Running4.Value = "H_Brute"
-    Parker.GrabStrike.Value = "T_CounterQuickstep"
+    Parker.GrabStrike.Value = "T_龍GParry"
     Parker.StanceStrike.Value = "ParkerDrop"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_TSpinCounterFront"
