@@ -1712,6 +1712,26 @@ local animationTrack = animator:LoadAnimation(animation)
 -- Set the speed and play the animation
 animationTrack:AdjustSpeed(animationSpeed)
 animationTrack:Play()
+
+local player = game.Players.LocalPlayer
+
+-- Replace this ID with the sound ID you want to play
+local soundId = "rbxassetid://7837530737"  -- Example sound ID (Oof sound)
+
+-- Create a new Sound instance
+local sound = Instance.new("Sound")
+sound.SoundId = soundId
+sound.Parent = player.Character:WaitForChild("HumanoidRootPart") -- Parent it to the character's HumanoidRootPart
+sound.MaxDistance = 100 -- Set max distance for spatial sound
+sound.RollOffMaxDistance = 100 -- Set roll-off max distance for better spatial sound
+
+-- Play the sound
+sound:Play()
+
+-- Clean up after the sound finishes
+sound.Ended:Connect(function()
+    sound:Destroy() -- Destroy the sound instance when it ends
+end)
     print("Executing first script...")
 end
 
