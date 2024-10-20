@@ -1678,9 +1678,10 @@ local interf = pgui.Interface
 
 game.ReplicatedStorage.Moves.TigerDrop.Anim.AnimationId = "rbxassetid://11528675185"
 game.ReplicatedStorage.Moves.TigerDrop.AniSpeed.Value = "3.1"
-game.ReplicatedStorage.Moves.RushTaunt.Anim.AnimationId = "rbxassetid://13765864700"
+game.ReplicatedStorage.Moves.RushTaunt.Anim.AnimationId = "rbxassetid://9313499003"
 game.ReplicatedStorage.Moves.ShuckyStun.Anim.AnimationId = "rbxassetid://12051777670"
 game.ReplicatedStorage.Moves.BTCounter.Anim.AnimationId = "rbxassetid://12481294601"
+game.ReplicatedStorage.Moves.GoonTaunt.Anim.AnimationId = "rbxassetid://9313529138"
 game.ReplicatedStorage.Moves.BStrike5.Anim.AnimationId = "rbxassetid://11699264190"
 game.ReplicatedStorage.Moves.BStrike4.Anim.AnimationId = "rbxassetid://13785070193"
 game.ReplicatedStorage.Moves.H_Whirl.MoveName.Value = "Essence of The Dragon God"
@@ -1730,6 +1731,20 @@ sound:Play()
 -- Clean up after the sound finishes
 sound.Ended:Connect(function()
     sound:Destroy() -- Destroy the sound instance when it ends
+end)
+
+--The Health
+game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.Health.Fill.BackgroundColor3 = Color3.new(0.114958, 1, 0.00603008)
+ 
+--The Damage Taken Indicator
+game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.Health.BFill.BackgroundColor3 = Color3.new(255, 255, 255)
+ 
+-- The MaxHealth
+spawn(function ()
+    while true do
+        task.wait()
+        game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.Health.BGFill.BackgroundColor3 = Color3.new(255, 255, 255)
+    end
 end)
     print("Executing first script...")
 end
