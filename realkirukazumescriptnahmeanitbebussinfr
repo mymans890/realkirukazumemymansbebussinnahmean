@@ -1690,17 +1690,6 @@ interf.Client.Disabled = true
 task.wait(0.1)
 interf.Client.Disabled = false
 
---Custom icon and health bar (credit to dundun)
-game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount:GetPropertyChangedSignal("Text"):Connect(function ()
-    if game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount.Text == "FISTICUFFS" then
-        game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.GUY.GUY.Image = "http://www.roblox.com/asset/?id=13003066381"
-    elseif game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount.Text == "FRENZY" then
-        game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.GUY.GUY.Image = "http://www.roblox.com/asset/?id=13003066381"
-    elseif game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount.Text == "BRUTE" then
-        game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.GUY.GUY.Image = "http://www.roblox.com/asset/?id=13003066381"
-    end
-end)
-
 local animationId = "rbxassetid://10928237540"
 local animationSpeed = 3 -- Change this value to set the desired speed
 
@@ -1754,6 +1743,17 @@ spawn(function ()
     while true do
         task.wait()
         game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.Health.BGFill.BackgroundColor3 = Color3.new(255, 255, 255)
+    end
+end)
+
+--Custom icon and health bar (credit to dundun)
+game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount:GetPropertyChangedSignal("Text"):Connect(function ()
+    if game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount.Text == "FISTICUFFS" then
+        game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.GUY.GUY.Image = "http://www.roblox.com/asset/?id=13003066381"
+    elseif game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount.Text == "FRENZY" then
+        game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.GUY.GUY.Image = "http://www.roblox.com/asset/?id=13003066381"
+    elseif game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount.Text == "BRUTE" then
+        game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.GUY.GUY.Image = "http://www.roblox.com/asset/?id=13003066381"
     end
 end)
     print("Executing first script...")
