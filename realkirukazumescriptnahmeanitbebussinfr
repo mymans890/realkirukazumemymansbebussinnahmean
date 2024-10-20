@@ -1694,7 +1694,6 @@ local animationId = "rbxassetid://10928237540"
 local animationSpeed = 3 -- Change this value to set the desired speed
 
 -- Assign the AnimationId
-game.ReplicatedStorage.Moves.TigerDrop.Anim.AnimationId = animationId
 
 -- Load the animation
 local animation = Instance.new("Animation")
