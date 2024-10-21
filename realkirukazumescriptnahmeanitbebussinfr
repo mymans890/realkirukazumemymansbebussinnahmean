@@ -2095,6 +2095,22 @@ UserInputService.InputChanged:Connect(function(input)
     end
 end)
 
+local Activated = false
+
+-- Detect when the G key is pressed
+UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+    if input.KeyCode == Enum.KeyCode.G and not gameProcessedEvent then
+        Activated = true
+    end
+end)
+
+-- Detect when the G key is released
+UserInputService.InputEnded:Connect(function(input, gameProcessedEvent)
+    if input.KeyCode == Enum.KeyCode.G and not gameProcessedEvent then
+        Activated = false
+    end
+end)
+
 spawn(function()
     while true do
         task.wait()
