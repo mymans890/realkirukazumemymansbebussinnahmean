@@ -1,5 +1,10 @@
 -- First script
 local function executeFirstScript()
+-- Options
+local KeyToPress = "C" -- Right click while holding C
+local StyleName = "Self-Taught Dragon" -- Style name
+local StyleColor = Color3.fromRGB(255,211,50) -- Style color
+
 local sound = Instance.new("Sound")
 sound.SoundId = "rbxassetid://9426968107" -- 9426968107
 sound.Looped = true
@@ -463,9 +468,9 @@ end
 v.Value = '15'
 v.Name = "Within"
                                                                                                                                                                                                                                                                                                                                                                                                                                                 main.Heat.noheattho.Text = "X"
-	                                                                                                                                                                                                                                                                                                                                                                                                                                            main.Heat.noheattho.Size = UDim2.new(10, 0, 1, 0)
+                                                                                                                                                                                                                                                                                                                                                                                                                                            main.Heat.noheattho.Size = UDim2.new(10, 0, 1, 0)
 menu.Bars.Mobile_Title.Text = "10 YEARS IN THE JOINT MAKE YOU A FUCKING PUSSY!"
-	                                                                                                                                                                                                                                                                                                                                                                                                                                            menu.Bars.Mobile_Title.Visible = true
+                                                                                                                                                                                                                                                                                                                                                                                                                                            menu.Bars.Mobile_Title.Visible = true
 --------------------------Taunt-----------------------------------
 if game.ReplicatedStorage.Moves:FindFirstChild("DragonTaunt") then
 v = game.ReplicatedStorage.Moves["DragonTaunt"]
@@ -499,7 +504,7 @@ v = game.ReplicatedStorage.Moves.DragonTaunt["Sound"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Moves.DragonTaunt)
 end
-v.Value = 'Yell'
+v.Value = 'PerfectGuard'
 v.Name = "Sound"
 if game.ReplicatedStorage.Moves.DragonTaunt:FindFirstChild("NoDmg") then
 v = game.ReplicatedStorage.Moves.DragonTaunt["NoDmg"]
@@ -1373,8 +1378,8 @@ v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Beast)
 end
 v.Value = 'H_Entangle'
 v.Name = "H_GrabStanding3"
-if game.ReplicatedStorage.Styles.Beast:FindFirstChild("H_StunnedFront") then
-v = game.ReplicatedStorage.Styles.Beast["H_StunnedFront"]
+if game.ReplicatedStorage.Styles.Beast:FindFirstChild("AniSpeed") then
+v = game.ReplicatedStorage.Styles.Beast["AniSpeed"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Beast)
 end
@@ -1383,44 +1388,44 @@ v.Name = "AniSpeed"
 
 
 local function playsound(id)
-	local sfx = Instance.new("Sound", workspace)
-	sfx.SoundId = "rbxassetid://"..tostring(id)
+local sfx = Instance.new("Sound", workspace)
+sfx.SoundId = "rbxassetid://"..tostring(id)
 
-	game:GetService("SoundService"):PlayLocalSound(sfx)
+game:GetService("SoundService"):PlayLocalSound(sfx)
 
-	spawn(function()
-		task.wait(sfx.TimeLength)
-		sfx:Destroy()
-	end)
+spawn(function()
+task.wait(sfx.TimeLength)
+sfx:Destroy()
+end)
 end
 
 function playticksound()
-	local sfx = Instance.new("Sound", workspace)
-	sfx.SoundId = "rbxassetid://4843088994"
+local sfx = Instance.new("Sound", workspace)
+sfx.SoundId = "rbxassetid://4843088994"
 
-	game:GetService("SoundService"):PlayLocalSound(sfx)
+game:GetService("SoundService"):PlayLocalSound(sfx)
 
-	spawn(function()
-		task.wait(2)
-		sfx:Destroy()
-	end)
+spawn(function()
+task.wait(2)
+sfx:Destroy()
+end)
 end
 
 local function play_ingamesound(sfxname)
-	local v = game.ReplicatedStorage.Sounds:FindFirstChild(sfxname)
-	local sfx = Instance.new("Sound", nil)
-	local id = v.Value
+local v = game.ReplicatedStorage.Sounds:FindFirstChild(sfxname)
+local sfx = Instance.new("Sound", nil)
+local id = v.Value
 
-	sfx.SoundId = id
+sfx.SoundId = id
 
-	for i,v in v:GetChildren() do
-		sfx[v.Name] = v.Value
-	end
+for i,v in v:GetChildren() do
+sfx[v.Name] = v.Value
+end
 
-	game.SoundService:PlayLocalSound(sfx)
-	task.delay(15, function()
-		sfx:Destroy()
-	end)
+game.SoundService:PlayLocalSound(sfx)
+task.delay(15, function()
+sfx:Destroy()
+end)
 end
 
 local Player = game.Players.LocalPlayer
@@ -1539,50 +1544,50 @@ local plr = game.Players.LocalPlayer
 local status = plr.Status
 
 function isInBattle()
-	return (plr:FindFirstChild("InBattle") and true or false)
+return (plr:FindFirstChild("InBattle") and true or false)
 end
 
 function isDungeon()
-	return game.ReplicatedStorage.Dungeon.Value
+return game.ReplicatedStorage.Dungeon.Value
 end
 
 function doingHact()
-	return (plr.Character:FindFirstChild("Heated") and true or false)
+return (plr.Character:FindFirstChild("Heated") and true or false)
 end
 
 function showMaxHeatEffect()
-	return (isInBattle() and not doingHact() and plr.Status.Heat.Value >= 100) and true or false
+return (isInBattle() and not doingHact() and plr.Status.Heat.Value >= 100) and true or false
 end
 
 function hasWeaponInHand()
-	return (plr.Character:FindFirstChild("Holding") and true or false)
+return (plr.Character:FindFirstChild("Holding") and true or false)
 end
 
 local function change_color()
-	if status.Style.Value == "Brawler" then
-		local DragonSequence = ColorSequence.new{ColorSequenceKeypoint.new(0, styles.Brawler.Color.Value), ColorSequenceKeypoint.new(1, styles.Brawler.Color.Value)}
-		local char = plr.Character
-		char.HumanoidRootPart.Fire_Main.Color = DragonSequence
-		char.HumanoidRootPart.Fire_Secondary.Color = DragonSequence
-		char.HumanoidRootPart.Fire_Main.Rate = status.Heat.Value >= 100 and 115 or status.Heat.Value >= 75 and 85 or 80
-		char.HumanoidRootPart.Fire_Secondary.Rate = status.Heat.Value >= 100 and 90 or status.Heat.Value >= 75 and 80 or 70
-		char.HumanoidRootPart.Lines1.Color = DragonSequence
-		char.HumanoidRootPart.Lines1.Rate = status.Heat.Value >= 100 and 60 or status.Heat.Value >= 75 and 40 or 20
-		char.HumanoidRootPart.Lines2.Color = DragonSequence
-		char.HumanoidRootPart.Lines2.Rate = status.Heat.Value >= 100 and 60 or status.Heat.Value >= 75 and 40 or 20
-		char.HumanoidRootPart.Sparks.Color = DragonSequence
-		if not char.HumanoidRootPart.TimeFor.Enabled then
-			char.HumanoidRootPart.TimeFor.Color = DragonSequence
-		end
+if status.Style.Value == "Brawler" then
+local DragonSequence = ColorSequence.new{ColorSequenceKeypoint.new(0, styles.Brawler.Color.Value), ColorSequenceKeypoint.new(1, styles.Brawler.Color.Value)}
+local char = plr.Character
+char.HumanoidRootPart.Fire_Main.Color = DragonSequence
+char.HumanoidRootPart.Fire_Secondary.Color = DragonSequence
+char.HumanoidRootPart.Fire_Main.Rate = status.Heat.Value >= 100 and 115 or status.Heat.Value >= 75 and 85 or 80
+char.HumanoidRootPart.Fire_Secondary.Rate = status.Heat.Value >= 100 and 90 or status.Heat.Value >= 75 and 80 or 70
+char.HumanoidRootPart.Lines1.Color = DragonSequence
+char.HumanoidRootPart.Lines1.Rate = status.Heat.Value >= 100 and 60 or status.Heat.Value >= 75 and 40 or 20
+char.HumanoidRootPart.Lines2.Color = DragonSequence
+char.HumanoidRootPart.Lines2.Rate = status.Heat.Value >= 100 and 60 or status.Heat.Value >= 75 and 40 or 20
+char.HumanoidRootPart.Sparks.Color = DragonSequence
+if not char.HumanoidRootPart.TimeFor.Enabled then
+char.HumanoidRootPart.TimeFor.Color = DragonSequence
+end
 
-		char.UpperTorso["r2f_aura_burst"].Lines1.Color = DragonSequence
-		char.UpperTorso["r2f_aura_burst"].Lines2.Color = DragonSequence
-		char.UpperTorso["r2f_aura_burst"].Flare.Color = DragonSequence
-		char.UpperTorso["r2f_aura_burst"].Lines1.Enabled = showMaxHeatEffect()
-		char.UpperTorso["r2f_aura_burst"].Flare.Enabled = showMaxHeatEffect()
-		char.UpperTorso["r2f_aura_burst"].Smoke.Color = DragonSequence
-		char.UpperTorso.Evading.Color = DragonSequence
-	end
+char.UpperTorso["r2f_aura_burst"].Lines1.Color = DragonSequence
+char.UpperTorso["r2f_aura_burst"].Lines2.Color = DragonSequence
+char.UpperTorso["r2f_aura_burst"].Flare.Color = DragonSequence
+char.UpperTorso["r2f_aura_burst"].Lines1.Enabled = showMaxHeatEffect()
+char.UpperTorso["r2f_aura_burst"].Flare.Enabled = showMaxHeatEffect()
+char.UpperTorso["r2f_aura_burst"].Smoke.Color = DragonSequence
+char.UpperTorso.Evading.Color = DragonSequence
+end
 end
 
 game:GetService("RunService").RenderStepped:Connect(change_color)
@@ -1606,16 +1611,16 @@ if moves:FindFirstChild("yes") then
     end
 
 function playticksound()
-	local sfx = Instance.new("Sound", workspace)
-	sfx.SoundId = "rbxassetid://12222183"
-	sfx.Volume = 2
+local sfx = Instance.new("Sound", workspace)
+sfx.SoundId = "rbxassetid://12222183"
+sfx.Volume = 2
 
-	game:GetService("SoundService"):PlayLocalSound(sfx)
+game:GetService("SoundService"):PlayLocalSound(sfx)
 
-	spawn(function()
-		wait(2)
-		sfx:Destroy()
-	end)
+spawn(function()
+wait(2)
+sfx:Destroy()
+end)
 end
 
 local notifyevent 
@@ -1656,34 +1661,36 @@ local guruparry = brawlerstyle:WaitForChild("GrabStrike")
 sendNotification("KIWAMI MEANS EXTREME!", color)
 
 uis.InputBegan:Connect(function(key)
-	if game.UserInputService:GetFocusedTextBox() == nil then
-		if key.KeyCode == Enum.KeyCode.X then
-			playticksound()
-			if guruparry.Parent ~= nil then
-				guruparry.Parent = nil
-				grabstrike.Parent = brawlerstyle
-				sendNotification("Counter Quickstep Enabled", color)
-			else
-			guruparry.Parent = brawlerstyle
-				grabstrike.Parent = nil
-				sendNotification("Parry Enabled", color)
-			end
-		end
-	end
+if game.UserInputService:GetFocusedTextBox() == nil then
+if key.KeyCode == Enum.KeyCode.X then
+playticksound()
+if guruparry.Parent ~= nil then
+guruparry.Parent = nil
+grabstrike.Parent = brawlerstyle
+sendNotification("Counter Quickstep Enabled", color)
+else
+guruparry.Parent = brawlerstyle
+grabstrike.Parent = nil
+sendNotification("Parry Enabled", color)
+end
+end
+end
 end)
 
 local plr = game.Players.LocalPlayer
 local pgui = plr.PlayerGui
 local interf = pgui.Interface
 
-game.ReplicatedStorage.Moves.TigerDrop.Anim.AnimationId = "rbxassetid://11528675185"
-game.ReplicatedStorage.Moves.TigerDrop.AniSpeed.Value = "3.1"
+game.ReplicatedStorage.Moves.CounterHook.Anim.AnimationId = "rbxassetid://11528675185"
+game.ReplicatedStorage.Moves.CounterHook.AniSpeed.Value = "3.3"
 game.ReplicatedStorage.Moves.RushTaunt.Anim.AnimationId = "rbxassetid://9313499003"
 game.ReplicatedStorage.Moves.ShuckyStun.Anim.AnimationId = "rbxassetid://12051777670"
 game.ReplicatedStorage.Moves.BTCounter.Anim.AnimationId = "rbxassetid://12481294601"
 game.ReplicatedStorage.Moves.GoonTaunt.Anim.AnimationId = "rbxassetid://9313529138"
 game.ReplicatedStorage.Moves.BStrike5.Anim.AnimationId = "rbxassetid://11699264190"
 game.ReplicatedStorage.Moves.BStrike4.Anim.AnimationId = "rbxassetid://13785070193"
+game.ReplicatedStorage.Moves.RushTaunt.Sound.Value = "Laugh"
+game.ReplicatedStorage.Moves.GoonTaunt.Sound.Value = "Laugh"
 game.ReplicatedStorage.Moves.H_Whirl.MoveName.Value = "Essence of The Dragon God"
 game.ReplicatedStorage.Moves:FindFirstChild("龍Strike5").Anim.AnimationId = "rbxassetid://13765848660"
 interf.Client.Disabled = true
@@ -1756,6 +1763,92 @@ game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.
         game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.GUY.GUY.Image = "http://www.roblox.com/asset/?id=13003066381"
     end
 end)
+
+local uis = game:GetService("UserInputService")
+game:GetService("RunService").Heartbeat:Connect(function()
+    if uis:IsKeyDown(Enum.KeyCode[KeyToPress]) then
+        e.Value = "ShuckyDrop"
+    else
+        e.Value = "BTCounter"   
+    end
+end)
+
+-- Reference to the 堂島の龍 folder
+local dojoStyle = game.ReplicatedStorage.Styles:FindFirstChild("堂島の龍")
+
+if dojoStyle then
+    -- Table holding the names and values you want to add or modify
+    local valuesToAdd = {
+        {name = "H_GrabStanding3", value = "H_Entangle"},
+        {name = "H_Knocked", value = "H_SolidCounter"},
+        {name = "H_BackWall", value = "H_WallSmashing"},
+        {name = "H_BlockingEnemy", value = "H_FaceTwist"},
+        {name = "H_Getup", value = "H_HeadPress"},
+        {name = "H_GetupUp", value = "H_HeadPressUp"}
+
+    }
+
+    for _, entry in ipairs(valuesToAdd) do
+        local existingValue = dojoStyle:FindFirstChild(entry.name)
+        if not existingValue then
+            existingValue = Instance.new("StringValue")
+            existingValue.Name = entry.name
+            existingValue.Parent = dojoStyle  -- Parent it to 堂島の龍
+        end
+        existingValue.Value = entry.value  -- Set the value
+    end
+end
+
+-- Reference to the 堂島の龍 folder
+local dojoStyle = game.ReplicatedStorage.Styles:FindFirstChild("नागराज")
+
+if dojoStyle then
+    -- Table holding the names and values you want to add or modify
+    local valuesToAdd = {
+        {name = "H_AbsordBlock", value = "H_Torment"},
+        {name = "H_GrabLeg", value = "H_Swing"},
+        {name = "H_GrabLegWall", value = "H_WallSmackLeg"},
+        {name = "H_GrabOnFallen", value = "H_LobCrush"},
+        {name = "H_Stunning", value = "H_Merciless"},
+        {name = "GuardGrabHit", value = "T_BearHug"}
+
+
+    }
+
+    for _, entry in ipairs(valuesToAdd) do
+        local existingValue = dojoStyle:FindFirstChild(entry.name)
+        if not existingValue then
+            existingValue = Instance.new("StringValue")
+            existingValue.Name = entry.name
+            existingValue.Parent = dojoStyle  -- Parent it to 堂島の龍
+        end
+        existingValue.Value = entry.value  -- Set the value
+    end
+end
+
+-- Reference to the 堂島の龍 folder
+local dojoStyle = game.ReplicatedStorage.Styles:FindFirstChild("नागराज").GuardGrabHit
+
+if dojoStyle then
+    -- Table holding the names and values you want to add or modify
+    local valuesToAdd = {
+        {name = "Ability", value = "Bear Hug"},
+
+
+    }
+
+    for _, entry in ipairs(valuesToAdd) do
+        local existingValue = dojoStyle:FindFirstChild(entry.name)
+        if not existingValue then
+            existingValue = Instance.new("StringValue")
+            existingValue.Name = entry.name
+            existingValue.Parent = dojoStyle  -- Parent it to 堂島の龍
+        end
+        existingValue.Value = entry.value  -- Set the value
+    end
+end
+
+-- if lazy add {name = "H_NewValue", value = "H_NewData"},
     print("Executing first script...")
 end
 
@@ -1979,7 +2072,6 @@ local function modifyStyles()
     Parker.H_Distanced.Value = "H_FastFootworkBack"
     Parker.Grab.Value = "GGrab"
     Parker.Throw.Value = "T_CounterQuickstep"
-    Parker.H_Fallen.Value = "H_FallenFinisher"
     Parker.Name = "STD"
     Parker.Parent = ReplicatedStorage.Styles
 
@@ -2007,7 +2099,7 @@ local function modifyStyles()
     Parker2.VisualName.Value = "Rushin"
     Parker2.Color.Value = Color3.new(255,0,255)
     Parker2.Name = "Rushin"
-    Parker2.Strike1.Value = "TigerDrop"
+    Parker2.Strike1.Value = "CounterHook"
     Parker2.Parent = ReplicatedStorage.Styles
 
     local styleToChange2 = "Rush"
@@ -2038,18 +2130,20 @@ local function modifyStyles()
     Parker.Rush2.Value = "RPunch2"
     Parker.Rush3.Value = "RPunch3"
     Parker.Rush4.Value = "RPunch2"
+    Parker.GuardGrabHit.Value = "T_BearHug"
     Parker.Strike1.Value = "DerekCharge"
     Parker.BlockStrike.Value = "ShuckyStun"
     Parker.H_Running4.Value = "H_Brute"
     Parker.GrabStrike.Value = "T_龍GParry"
+    Parker.Throw.Value = "T_BearHug"
     Parker.StanceStrike.Value = "ParkerDrop"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_TSpinCounterFront"
     Parker.Taunt.Value = "GoonTaunt"
     Parker.Grab.Value = "GGrab"
     Parker.H_GrabStanding.Value = "H_Piledriver"
-    Parker.Throw.Value = "T_CounterQuickstep"
     Parker.H_Fallen.Value = "H_FallenBeatdown"
+    Parker.H_FallenDown.Value = "H_FallenGrate"
     Parker.Name = "Tea"
     Parker.Parent = ReplicatedStorage.Styles
 
@@ -2095,22 +2189,6 @@ UserInputService.InputChanged:Connect(function(input)
     end
 end)
 
-local Activated = false
-
--- Detect when the G key is pressed
-UserInputService.InputBegan:Connect(function(input, gameProcessedEvent)
-    if input.KeyCode == Enum.KeyCode.G and not gameProcessedEvent then
-        Activated = true
-    end
-end)
-
--- Detect when the G key is released
-UserInputService.InputEnded:Connect(function(input, gameProcessedEvent)
-    if input.KeyCode == Enum.KeyCode.G and not gameProcessedEvent then
-        Activated = false
-    end
-end)
-
 spawn(function()
     while true do
         task.wait()
@@ -2122,7 +2200,6 @@ end)
 
 -- Execute the style modification function
 modifyStyles()
-
     print("Executing third script...")
 end
 
