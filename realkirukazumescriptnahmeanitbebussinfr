@@ -1617,10 +1617,8 @@ end)
 game:GetService("RunService").RenderStepped:Connect(change_color)
 
 if moves:FindFirstChild("TigerDrop") then
-        moves:FindFirstChild("BRCounter2").Name = "FakeCounter2"
         moves:FindFirstChild("TigerDrop").Name = "BRCounter2"
-        moves:FindFirstChild("BRCounter1").Name = "FakeCounter1"
-        moves:FindFirstChild("BRGrab").Name = "FakeGrab"
+        moves:FindFirstChild("ParkerDrop").Name = "BRCounter1"
 
         local ignore = Instance.new("Folder")
         ignore.Name = "IgnoreDmg"
