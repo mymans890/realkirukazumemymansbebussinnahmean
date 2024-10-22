@@ -1791,15 +1791,23 @@ spawn(function ()
 end)
 
 --Custom icon and health bar (credit to dundun)
-game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount:GetPropertyChangedSignal("Text"):Connect(function ()
-    if game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount.Text == "FISTICUFFS" then
-        game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.GUY.GUY.Image = "http://www.roblox.com/asset/?id=13003066381"
-    elseif game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount.Text == "FRENZY" then
-        game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.GUY.GUY.Image = "http://www.roblox.com/asset/?id=13003066381"
-    elseif game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.StyleBar.amount.Text == "BRUTE" then
-        game:GetService("Players").LocalPlayer.PlayerGui.Interface.Battle.Main.GUY.GUY.Image = "http://www.roblox.com/asset/?id=13003066381"
-    end
-end)
+Player.PlayerGui.Interface:FindFirstChild("HeatActionSound").Value = "rbxassetid://7602265915"
+Player.PlayerGui.Interface:FindFirstChild("HeatActionSound").Volume.Value = "5"
+Main.HeatMove.TextLabel.Font = "Merriweather"
+Main.HeatMove.stale.Font = "Merriweather"
+Main.Health.Label.Font = "Merriweather"
+Main.StyleBar.amount.Font = "Merriweather"
+Main.MoneyBar.amount.Font = "Merriweather"
+Main.XP.Label.Font = "Merriweather"
+Main.GUY.GUY.Image = "rbxthumb://type=Asset&id=5841616723&w=420&h=420"
+Main.Health.Fill.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+Main.Health.FillEnd.ImageColor3 = Color3.fromRGB(0, 255, 0)
+Main.HeatMove.ImageColor3 = Color3.fromRGB(255, 89, 89)
+Main.HeatMove.TextLabel.TextColor3 = Color3.fromRGB(255, 89, 89)
+Player.PlayerGui.Interface.Prop.Prop.Font = "Merriweather"
+Player.PlayerGui.Interface.Prop.Uses.Use.Font = "Merriweather"
+Player.PlayerGui.EInterface.EnemyHP.TextLabel.Font = "Merriweather"
+Player.PlayerGui.EInterface.EnemyHP.BG.Meter.HPTxt.Font = "Merriweather"
 
 local uis = game:GetService("UserInputService")
 game:GetService("RunService").Heartbeat:Connect(function()
@@ -1821,7 +1829,20 @@ if dojoStyle then
         {name = "H_BackWall", value = "H_WallSmashing"},
         {name = "H_BlockingEnemy", value = "H_FaceTwist"},
         {name = "H_Getup", value = "H_HeadPress"},
-        {name = "H_GetupUp", value = "H_HeadPressUp"}
+        {name = "H_GetupUp", value = "H_HeadPressUp"},
+        {name = "H_AbsorbBlock", value = "H_Torment"},
+        {name = "H_GrabLeg", value = "H_Swing"},
+        {name = "H_GrabLegWall", value = "H_WallSmackLeg"},
+        {name = "H_GrabOnFallen", value = "H_LobCrush"},
+        {name = "H_Stunning", value = "H_Merciless"},
+        {name = "GuardGrabHit", value = "T_BearHug"},
+        {name = "H_EvadedB", value = "H_FastFootworkBack"},
+        {name = "H_EvadedF", value = "H_FastFootworkFront"},
+        {name = "H_EvadedL", value = "H_FastFootworkLeft"},
+        {name = "H_EvadedR", value = "H_FastFootworkRight"},
+        {name = "H_Stunning", value = "H_Reversal"},
+        {name = "H_Stunned", value = "H_FlyingKick"},
+             
 
     }
 
@@ -1842,7 +1863,7 @@ local dojoStyle = game.ReplicatedStorage.Styles:FindFirstChild("नागरा�
 if dojoStyle then
     -- Table holding the names and values you want to add or modify
     local valuesToAdd = {
-        {name = "H_AbsordBlock", value = "H_Torment"},
+        {name = "H_AbsorbBlock", value = "H_Torment"},
         {name = "H_GrabLeg", value = "H_Swing"},
         {name = "H_GrabLegWall", value = "H_WallSmackLeg"},
         {name = "H_GrabOnFallen", value = "H_LobCrush"},
@@ -2322,7 +2343,7 @@ end)
 
 local blacklist = {"Teleport"}
 
-game.ReplicatedStorage.OverworldSpeed.Value = 2
+game.ReplicatedStorage.OverworldSpeed.Value = 3
 
 while true do
 	for i,v in pairs(game.ReplicatedStorage.Sounds:GetChildren()) do
