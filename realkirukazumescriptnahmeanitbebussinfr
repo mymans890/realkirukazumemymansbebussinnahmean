@@ -1590,12 +1590,37 @@ char.UpperTorso.Evading.Color = DragonSequence
 end
 end
 
+local UserInputService = game:GetService("UserInputService")
+getfenv().Activated = false  -- Initialize the Activated variable
+
+local function FillHeat()
+    local Event = game:GetService("ReplicatedStorage").Events.ME
+
+    for i = 1, 6 do
+        local A_1 = {
+            [1] = "heat", 
+            [2] = game:GetService("ReplicatedStorage").Moves.Taunt
+        }
+        Event:FireServer(A_1)
+    end
+end
+
+-- Continuously fill heat while 'Activated' is true
+spawn(function()
+    while true do
+        task.wait(0.1)  -- Control the loop speed (adjust if needed)
+        if Activated then
+            FillHeat()
+        end
+    end
+end)
 game:GetService("RunService").RenderStepped:Connect(change_color)
 
-if moves:FindFirstChild("yes") then
+if moves:FindFirstChild("TigerDrop") then
         moves:FindFirstChild("BRCounter2").Name = "FakeCounter2"
-        moves:FindFirstChild("yes").Name = "BRCounter2"
+        moves:FindFirstChild("TigerDrop").Name = "BRCounter2"
         moves:FindFirstChild("BRCounter1").Name = "FakeCounter1"
+        moves:FindFirstChild("TigerDrop")Name = "BRCounter1"
         moves:FindFirstChild("BRGrab").Name = "FakeGrab"
 
         local ignore = Instance.new("Folder")
@@ -1675,6 +1700,23 @@ sendNotification("Parry Enabled", color)
 end
 end
 end
+end)
+
+task.wait(1)
+sendNotification("Hold [G] to instantly fill heat.")
+ 
+-- Detect when the G key is pressed to start filling heat
+UserInputService.InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.G then
+        getfenv().Activated = true
+    end
+end)
+
+-- Detect when the G key is released to stop filling heat
+UserInputService.InputEnded:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.G then
+        getfenv().Activated = false
+    end
 end)
 
 local plr = game.Players.LocalPlayer
