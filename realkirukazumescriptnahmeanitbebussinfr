@@ -1620,7 +1620,6 @@ if moves:FindFirstChild("TigerDrop") then
         moves:FindFirstChild("BRCounter2").Name = "FakeCounter2"
         moves:FindFirstChild("TigerDrop").Name = "BRCounter2"
         moves:FindFirstChild("BRCounter1").Name = "FakeCounter1"
-        moves:FindFirstChild("TigerDrop")Name = "BRCounter1"
         moves:FindFirstChild("BRGrab").Name = "FakeGrab"
 
         local ignore = Instance.new("Folder")
@@ -1731,8 +1730,6 @@ game.ReplicatedStorage.Moves.BTCounter.Anim.AnimationId = "rbxassetid://12481294
 game.ReplicatedStorage.Moves.GoonTaunt.Anim.AnimationId = "rbxassetid://9313529138"
 game.ReplicatedStorage.Moves.BStrike5.Anim.AnimationId = "rbxassetid://11699264190"
 game.ReplicatedStorage.Moves.BStrike4.Anim.AnimationId = "rbxassetid://13785070193"
-game.ReplicatedStorage.Moves.RushTaunt.Sound.Value = "Laugh"
-game.ReplicatedStorage.Moves.GoonTaunt.Sound.Value = "Laugh"
 game.ReplicatedStorage.Moves.H_Whirl.MoveName.Value = "Essence of The Dragon God"
 game.ReplicatedStorage.Moves:FindFirstChild("龍Strike5").Anim.AnimationId = "rbxassetid://13765848660"
 interf.Client.Disabled = true
