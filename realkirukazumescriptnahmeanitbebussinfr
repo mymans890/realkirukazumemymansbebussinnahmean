@@ -1480,7 +1480,7 @@ local Main = Player.PlayerGui.Interface.Battle.Main
 
 Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     if Main.HeatMove.TextLabel.Text == "Essence of Fast Footwork [Back]" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_SumoSlap.MoveName.Value
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_FastFootworkBack.MoveName.Value
         local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_SumoSlap.Anim)
         Anim.Priority = Enum.AnimationPriority.Action4
         Anim:AdjustSpeed(0.9)
@@ -1496,7 +1496,7 @@ local Main = Player.PlayerGui.Interface.Battle.Main
 
 Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     if Main.HeatMove.TextLabel.Text == "Essence of Fisticuffs" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_UltimateEssence.MoveName.Value
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_Fisticuffs.MoveName.Value
         local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_UltimateEssence.Anim)
         Anim.Priority = Enum.AnimationPriority.Action4
         Anim:AdjustSpeed(0.9)
@@ -1512,7 +1512,7 @@ local Main = Player.PlayerGui.Interface.Battle.Main
 
 Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     if Main.HeatMove.TextLabel.Text == "Essence of Piledriver" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_UltimateEssence.MoveName.Value
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_Piledriver.MoveName.Value
         local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_UltimateEssence.Anim)
         Anim.Priority = Enum.AnimationPriority.Action4
         Anim:Play()
@@ -1531,7 +1531,7 @@ local Main = Player.PlayerGui.Interface.Battle.Main
 
 Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     if Main.HeatMove.TextLabel.Text == "Guru Spin Counter [Back]" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_UltimateEssence.MoveName.Value
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_SpinCounterBack.MoveName.Value
         local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_UltimateEssence.Anim)
         Anim.Priority = Enum.AnimationPriority.Action4
         Anim:Play()
@@ -1550,7 +1550,7 @@ local Main = Player.PlayerGui.Interface.Battle.Main
 
 Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     if Main.HeatMove.TextLabel.Text == "Essence of Frenzy [Back]" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_SumoSlap.MoveName.Value
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_FastFootworkBack.MoveName.Value
         local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_SumoSlap.Anim)
         Anim.Priority = Enum.AnimationPriority.Action4
         Anim:AdjustSpeed(0.9)
@@ -1566,7 +1566,7 @@ local Main = Player.PlayerGui.Interface.Battle.Main
 
 Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     if Main.HeatMove.TextLabel.Text == "Essence of Solid Counter" then
-        Main.HeatMove.TextLabel.Text = Rep.Moves.H_Rolling.MoveName.Value
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_SolidCounter.MoveName.Value
         local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_Rolling.Anim)
         Anim.Priority = Enum.AnimationPriority.Action4
         Anim:AdjustSpeed(0.9)
@@ -1841,7 +1841,10 @@ game.ReplicatedStorage.Moves.RushTaunt.Anim.AnimationId = "rbxassetid://93134990
 game.ReplicatedStorage.Moves.ShuckyStun.Anim.AnimationId = "rbxassetid://12051777670"
 game.ReplicatedStorage.Moves.GoonTaunt.Anim.AnimationId = "rbxassetid://9313529138"
 game.ReplicatedStorage.Moves.BStrike5.Anim.AnimationId = "rbxassetid://7603768348"
+game.ReplicatedStorage.Moves.B2Strike2.Anim.AnimationId = "rbxassetid://11808830651"
+game.ReplicatedStorage.Moves.B2Strike3.Anim.AnimationId = "rbxassetid://13785070193"
 game.ReplicatedStorage.Moves.BStrike4.Anim.AnimationId = "rbxassetid://13785070193"
+game.ReplicatedStorage.Moves.FStrike2.Dmg.Value = "80"
 game.ReplicatedStorage.Moves.H_FallenKick.MoveName.Value = "Essence of Football Kicking"
 game.ReplicatedStorage.Moves.H_FallenStomp.MoveName.Value = "Essence of Stomp"
 game.ReplicatedStorage.Moves.H_Whirl.MoveName.Value = "Essence of The Dragon God"
@@ -2716,12 +2719,20 @@ local function modifyStyles()
     local Parker = ReplicatedStorage.Styles["नागराज"]:Clone()
     Parker.Speed.Value = 1.5
     Parker.Color.Value = Color3.new(1,1,0)
-    Parker.VisualName.Value = "Tenk"
+    Parker.VisualName.Value = "DE-Tenk"
     Parker.H_FullHeat.Value = "H_SpinCounterBack"
-    Parker.Rush1.Value = "RPunch1"
-    Parker.Rush2.Value = "RPunch2"
-    Parker.Rush3.Value = "RPunch3"
-    Parker.Rush4.Value = "RPunch2"
+    Parker.Rush1.Value = "龍Attack1"
+    Parker.Rush2.Value = "BAttack1"
+    Parker.Rush3.Value = "FPunch2"
+    Parker.Rush4.Value = "龍Attack2"
+    Parker.Strike2.Value = "GStrike1"
+    Parker:FindFirstChild("2Strike2").Value = "BEvadeStrikeBack"
+    Parker:FindFirstChild("2Strike3").Value = "B2Strike2"
+    Parker.Strike3.Value = "BStrike4"
+    Parker.Strike4.Value = "BStrike5"
+    Parker:FindFirstChild("2Strike4").Value = "B2Strike3"
+    Parker.Strike5.Value = "BStrike4"
+    Parker:FindFirstChild("2Strike5").Value = "RDashAttack"
     Parker.GuardGrabHit.Value = "T_BearHug"
     Parker.Strike1.Value = "DerekCharge"
     Parker.BlockStrike.Value = "ShuckyStun"
