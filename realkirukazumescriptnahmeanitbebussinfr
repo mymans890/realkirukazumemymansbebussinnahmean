@@ -29,6 +29,32 @@ local main = bt.Main
 
 local menu = pgui.MenuUI.Menu 
 local abil = menu.Abilities.Frame.Frame.Frame
+
+local function sendNotification(text, color, sound)
+    if not color then color = Color3.new(1, 1, 1) end
+    pgui.NotifyUI.Awards.ChildAdded:Once(function(c)
+        if c.Text == text then
+            c.TextColor3 = color
+            coroutine.wrap(function()
+                local con;
+                con = game:GetService("RunService").RenderStepped:Connect(function()
+                    if not c then
+                        con:Disconnect()
+                        return
+                    end
+                    c.TextColor3 = color
+                end)()
+            end)()
+        end
+    end)
+    notifyevent:Fire(text, sound or nil)
+end
+ 
+local alreadyRunning = game.ReplicatedStorage:FindFirstChild("DragonStyle")
+if alreadyRunning then
+	sendNotification("Dragon Style is already loaded")
+	return
+end
                                               
 if game.ReplicatedStorage.Styles:FindFirstChild("Brawler") then
 v = game.ReplicatedStorage.Styles["Brawler"]
@@ -467,10 +493,10 @@ v = Instance.new("StringValue", game.ReplicatedStorage.Moves.H_FastFootworkBack)
 end
 v.Value = '15'
 v.Name = "Within"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                main.Heat.noheattho.Text = "X"
-                                                                                                                                                                                                                                                                                                                                                                                                                                            main.Heat.noheattho.Size = UDim2.new(10, 0, 1, 0)
-menu.Bars.Mobile_Title.Text = "10 YEARS IN THE JOINT MAKE YOU A FUCKING PUSSY!"
-                                                                                                                                                                                                                                                                                                                                                                                                                                            menu.Bars.Mobile_Title.Visible = true
+                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                            
+menu.Bars.Mobile_Title.Text = "KIRYU-CHAN!"
+                                                                                                                                                                                                                                                                                                                                                                                                                                            
 --------------------------Taunt-----------------------------------
 if game.ReplicatedStorage.Moves:FindFirstChild("DragonTaunt") then
 v = game.ReplicatedStorage.Moves["DragonTaunt"]
@@ -504,7 +530,7 @@ v = game.ReplicatedStorage.Moves.DragonTaunt["Sound"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Moves.DragonTaunt)
 end
-v.Value = 'PerfectGuard'
+v.Value = 'Laugh'
 v.Name = "Sound"
 if game.ReplicatedStorage.Moves.DragonTaunt:FindFirstChild("NoDmg") then
 v = game.ReplicatedStorage.Moves.DragonTaunt["NoDmg"]
@@ -551,7 +577,7 @@ else
 v = Instance.new("Animation", game.ReplicatedStorage.Moves.DragonTaunt)
 end
 
-v.AnimationId = "rbxassetid://10928237540"
+v.AnimationId = "rbxassetid://9313515166"
 v.Name = "Anim"
 if game.ReplicatedStorage.Moves.DragonTaunt:FindFirstChild("MoveForward") then
 v = game.ReplicatedStorage.Moves.DragonTaunt["MoveForward"]
@@ -1533,7 +1559,59 @@ Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
     end
 end)
 
+local Player = game.Players.LocalPlayer
+local Rep = game.ReplicatedStorage
+local Char = Player.Character
+local Main = Player.PlayerGui.Interface.Battle.Main
 
+Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
+    if Main.HeatMove.TextLabel.Text == "Essence of Solid Counter" then
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_Rolling.MoveName.Value
+        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.H_Rolling.Anim)
+        Anim.Priority = Enum.AnimationPriority.Action4
+        Anim:AdjustSpeed(0.9)
+        Anim:Play()
+        Anim:Destroy()
+    end
+end)
+
+local Player = game.Players.LocalPlayer
+local Rep = game.ReplicatedStorage
+local Char = Player.Character
+local Main = Player.PlayerGui.Interface.Battle.Main
+
+Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
+    if Main.HeatMove.TextLabel.Text == "Essence of Punting" then
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_FallenKick.MoveName.Value
+        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.BTCounter.Anim)
+        Anim.Priority = Enum.AnimationPriority.Action4
+        Anim:Play()
+              
+        -- Add a short delay before adjusting the speed
+        wait(0.1)
+        Anim:AdjustSpeed(0.7)  -- Attempt to change speed after loading
+        Anim:Destroy()
+    end
+end)
+
+local Player = game.Players.LocalPlayer
+local Rep = game.ReplicatedStorage
+local Char = Player.Character
+local Main = Player.PlayerGui.Interface.Battle.Main
+
+Main.HeatMove.TextLabel:GetPropertyChangedSignal("Text"):Connect(function()
+    if Main.HeatMove.TextLabel.Text == "Essence of Stomping" then
+        Main.HeatMove.TextLabel.Text = Rep.Moves.H_FallenStomp.MoveName.Value
+        local Anim = Char.Humanoid:LoadAnimation(Rep.Moves.GStomp.Anim)
+        Anim.Priority = Enum.AnimationPriority.Action4
+        Anim:Play()
+              
+        -- Add a short delay before adjusting the speed
+        wait(0.1)
+        Anim:AdjustSpeed(0.7)  -- Attempt to change speed after loading
+        Anim:Destroy()
+    end
+end)
 
 local DragonText = "Dragon"
 local DragonColor = Color3.new(0.95, 0.05, 0.1)
@@ -1617,8 +1695,8 @@ end)
 game:GetService("RunService").RenderStepped:Connect(change_color)
 
 if moves:FindFirstChild("TigerDrop") then
+        moves:FindFirstChild("BRCounter2").Name = "FakeCounter2"
         moves:FindFirstChild("TigerDrop").Name = "BRCounter2"
-        moves:FindFirstChild("ParkerDrop").Name = "BRCounter1"
 
         local ignore = Instance.new("Folder")
         ignore.Name = "IgnoreDmg"
@@ -1629,6 +1707,38 @@ if moves:FindFirstChild("TigerDrop") then
             n.Name = "HSize"
             n.Value = 2
             n.Parent = moves:FindFirstChild("BRCounter2")
+        end
+    end
+
+if moves:FindFirstChild("ParkerDrop") then
+        moves:FindFirstChild("BRCounter1").Name = "FakeCounter1"
+        moves:FindFirstChild("ParkerDrop").Name = "BRCounter1"
+
+        local ignore = Instance.new("Folder")
+        ignore.Name = "IgnoreDmg"
+        ignore.Parent = moves:FindFirstChild("BRCounter1")
+
+        if not moves:FindFirstChild("BRCounter1"):FindFirstChild("HSize") then
+            local n = Instance.new("NumberValue")
+            n.Name = "HSize"
+            n.Value = 2
+            n.Parent = moves:FindFirstChild("BRCounter1")
+        end
+    end
+
+if moves:FindFirstChild("T_BearHug") then
+        moves:FindFirstChild("T_FinishingHold4").Name = "FakeFinishingHold4"
+        moves:FindFirstChild("T_BearHug").Name = "T_FinishingHold4"
+
+        local ignore = Instance.new("Folder")
+        ignore.Name = "IgnoreDmg"
+        ignore.Parent = moves:FindFirstChild("T_FinishingHold4")
+
+        if not moves:FindFirstChild("T_FinishingHold4"):FindFirstChild("HSize") then
+            local n = Instance.new("NumberValue")
+            n.Name = "HSize"
+            n.Value = 2
+            n.Parent = moves:FindFirstChild("T_FinishingHold4")
         end
     end
 
@@ -1682,21 +1792,26 @@ local guruparry = brawlerstyle:WaitForChild("GrabStrike")
 
 sendNotification("KIWAMI MEANS EXTREME!", color)
 
+local grabstrike = rushstyle:WaitForChild("GrabStrike"):Clone()
+local guruparry = brawlerstyle:WaitForChild("GrabStrike")
+
+sendNotification("Press X to swap counter step and parry on Self-Taught Dragon", color)
+
 uis.InputBegan:Connect(function(key)
-if game.UserInputService:GetFocusedTextBox() == nil then
-if key.KeyCode == Enum.KeyCode.X then
-playticksound()
-if guruparry.Parent ~= nil then
-guruparry.Parent = nil
-grabstrike.Parent = brawlerstyle
-sendNotification("Counter Quickstep Enabled", color)
-else
-guruparry.Parent = brawlerstyle
-grabstrike.Parent = nil
-sendNotification("Parry Enabled", color)
-end
-end
-end
+	if game.UserInputService:GetFocusedTextBox() == nil then
+		if key.KeyCode == Enum.KeyCode.X then
+			playticksound()
+			if guruparry.Parent ~= nil then
+				guruparry.Parent = nil
+				grabstrike.Parent = brawlerstyle
+				sendNotification("Counter Quickstep Enabled", color)
+			    else
+			guruparry.Parent = brawlerstyle
+				grabstrike.Parent = nil
+				sendNotification("Parry Enabled", color)
+			end
+		end
+	end
 end)
 
 task.wait(1)
@@ -1724,9 +1839,8 @@ game.ReplicatedStorage.Moves.CounterHook.Anim.AnimationId = "rbxassetid://115286
 game.ReplicatedStorage.Moves.CounterHook.AniSpeed.Value = "3.3"
 game.ReplicatedStorage.Moves.RushTaunt.Anim.AnimationId = "rbxassetid://9313499003"
 game.ReplicatedStorage.Moves.ShuckyStun.Anim.AnimationId = "rbxassetid://12051777670"
-game.ReplicatedStorage.Moves.BTCounter.Anim.AnimationId = "rbxassetid://12481294601"
 game.ReplicatedStorage.Moves.GoonTaunt.Anim.AnimationId = "rbxassetid://9313529138"
-game.ReplicatedStorage.Moves.BStrike5.Anim.AnimationId = "rbxassetid://11699264190"
+game.ReplicatedStorage.Moves.BStrike5.Anim.AnimationId = "rbxassetid://7603768348"
 game.ReplicatedStorage.Moves.BStrike4.Anim.AnimationId = "rbxassetid://13785070193"
 game.ReplicatedStorage.Moves.H_Whirl.MoveName.Value = "Essence of The Dragon God"
 game.ReplicatedStorage.Moves:FindFirstChild("龍Strike5").Anim.AnimationId = "rbxassetid://13765848660"
@@ -1829,6 +1943,7 @@ if dojoStyle then
         {name = "H_BackWall", value = "H_WallSmashing"},
         {name = "H_BlockingEnemy", value = "H_FaceTwist"},
         {name = "H_Getup", value = "H_HeadPress"},
+        {name = "H_AirFallen", value = "H_Whirl"},
         {name = "H_GetupUp", value = "H_HeadPressUp"},
         {name = "H_AbsorbBlock", value = "H_Torment"},
         {name = "H_GrabLeg", value = "H_Swing"},
@@ -1841,7 +1956,7 @@ if dojoStyle then
         {name = "H_EvadedL", value = "H_FastFootworkLeft"},
         {name = "H_EvadedR", value = "H_FastFootworkRight"},
         {name = "H_Stunning", value = "H_Reversal"},
-        {name = "H_Stunned", value = "H_FlyingKick"},
+        {name = "H_Stunned", value = "H_FlyingKick"}
              
 
     }
@@ -1886,6 +2001,28 @@ end
 
 -- Reference to the 堂島の龍 folder
 local dojoStyle = game.ReplicatedStorage.Styles:FindFirstChild("नागराज").GuardGrabHit
+
+if dojoStyle then
+    -- Table holding the names and values you want to add or modify
+    local valuesToAdd = {
+        {name = "Ability", value = "Bear Hug"},
+
+
+    }
+
+    for _, entry in ipairs(valuesToAdd) do
+        local existingValue = dojoStyle:FindFirstChild(entry.name)
+        if not existingValue then
+            existingValue = Instance.new("StringValue")
+            existingValue.Name = entry.name
+            existingValue.Parent = dojoStyle  -- Parent it to 堂島の龍
+        end
+        existingValue.Value = entry.value  -- Set the value
+    end
+end
+
+-- Reference to the 堂島の龍 folder
+local dojoStyle = game.ReplicatedStorage.Styles:FindFirstChild("堂島の龍").GuardGrabHit
 
 if dojoStyle then
     -- Table holding the names and values you want to add or modify
@@ -2523,6 +2660,7 @@ local function modifyStyles()
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_FastFootworkBack"
     Parker.Grab.Value = "GGrab"
+    Parker.HThrow.Value = "T_ShoulderGrab"
     Parker.Throw.Value = "T_CounterQuickstep"
     Parker.Name = "STD"
     Parker.Parent = ReplicatedStorage.Styles
@@ -2587,7 +2725,7 @@ local function modifyStyles()
     Parker.BlockStrike.Value = "ShuckyStun"
     Parker.H_Running4.Value = "H_Brute"
     Parker.GrabStrike.Value = "T_龍GParry"
-    Parker.Throw.Value = "T_BearHug"
+    Parker.Throw.Value = "T_BeastToss"
     Parker.StanceStrike.Value = "ParkerDrop"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_TSpinCounterFront"
@@ -2748,6 +2886,8 @@ while true do
 	end
 	task.wait()
 end
+
+sendNotification("Mod Loaded")
     print("Executing third script...")
 end
 
