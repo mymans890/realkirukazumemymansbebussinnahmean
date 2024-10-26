@@ -1446,10 +1446,10 @@ v = Instance.new("NumberValue", game.ReplicatedStorage.Moves["TigerDrop"])
 end
 v.Value = 1 
 v.Name = "AniSpeed"
-if game.ReplicatedStorage.Moves.H_GUltimateEssence.["KF1"]["2"]:FindFirstChild("HSound") then
-v = game.ReplicatedStorage.Moves.H_GUltimateEssence.["KF1"]["2"]["HSound"]
+if game.ReplicatedStorage.Moves.H_GUltimateEssence["KF1"]["2"]:FindFirstChild("HSound") then
+v = game.ReplicatedStorage.Moves.H_GUltimateEssence["KF1"]["2"]["HSound"]
 else
-v = Instance.new("StringValue", game.ReplicatedStorage.Moves.H_GUltimateEssence.["KF1"].["2"])
+v = Instance.new("StringValue", game.ReplicatedStorage.Moves.H_GUltimateEssence["KF1"]["2"])
 end
 v.Value = 'MassiveSlap'
 v.Name = "Sound"
