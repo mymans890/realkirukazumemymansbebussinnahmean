@@ -1416,7 +1416,7 @@ v = game.ReplicatedStorage.Moves["龍GTigerDrop"]["Anim"]
 else
 v = Instance.new("Animation", game.ReplicatedStorage.Moves["龍TigerDrop"])
 end
-v.AnimationId = "rbxassetid://12338275115" 
+v.AnimationId = "rbxassetid://11528675185" 
 v.Name = "Anim"
 if game.ReplicatedStorage.Moves["龍GTigerDrop"]:FindFirstChild("ForceSF") then
 v = game.ReplicatedStorage.Moves["龍GTigerDrop"]["ForceSF"]
@@ -1872,6 +1872,7 @@ local interf = pgui.Interface
 
 game.ReplicatedStorage.Moves.CounterHook.Anim.AnimationId = "rbxassetid://11528675185"
 game.ReplicatedStorage.Moves.CounterHook.AniSpeed.Value = "3.3"
+game.ReplicatedStorage.Moves.BRCounter2.AniSpeed.Value = "3.4"
 game.ReplicatedStorage.Moves.RushTaunt.Anim.AnimationId = "rbxassetid://9313499003"
 game.ReplicatedStorage.Moves.ShuckyStun.Anim.AnimationId = "rbxassetid://12051777670"
 game.ReplicatedStorage.Moves.GoonTaunt.Anim.AnimationId = "rbxassetid://9313529138"
