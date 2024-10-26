@@ -1844,7 +1844,7 @@ game.ReplicatedStorage.Moves.BStrike5.Anim.AnimationId = "rbxassetid://760376834
 game.ReplicatedStorage.Moves.B2Strike2.Anim.AnimationId = "rbxassetid://11808830651"
 game.ReplicatedStorage.Moves.B2Strike3.Anim.AnimationId = "rbxassetid://13785070193"
 game.ReplicatedStorage.Moves.BStrike4.Anim.AnimationId = "rbxassetid://13785070193"
-game.ReplicatedStorage.Moves.FStrike2.Dmg.Value = "80"
+game.ReplicatedStorage.Moves.GStrike1.Dmg.Value = "80"
 game.ReplicatedStorage.Moves.H_FallenKick.MoveName.Value = "Essence of Football Kicking"
 game.ReplicatedStorage.Moves.H_FallenStomp.MoveName.Value = "Essence of Stomp"
 game.ReplicatedStorage.Moves.H_Whirl.MoveName.Value = "Essence of The Dragon God"
@@ -1961,7 +1961,17 @@ if dojoStyle then
         {name = "H_EvadedL", value = "H_FastFootworkLeft"},
         {name = "H_EvadedR", value = "H_FastFootworkRight"},
         {name = "H_Stunning", value = "H_Reversal"},
-        {name = "H_Stunned", value = "H_FlyingKick"}
+        {name = "H_Stunned", value = "H_FlyingKick"},
+        {name = "Rush5", value = "BAttack2"},
+        {name = "Rush6", value = "BAttack1"},
+        {name = "Rush7", value = "BAttack2"},
+        {name = "Rush8", value = "BAttack1"},
+        {name = "Strike6", value = "B2Strike1"},
+        {name = "Strike7", value = "B2Strike4"},
+        {name = "Strike8", value = "RStrike8"},
+        {name = "Strike9", value = "龍Strike5"}
+        
+        
              
 
     }
@@ -2047,6 +2057,22 @@ if dojoStyle then
         existingValue.Value = entry.value  -- Set the value
     end
 end
+
+-- Function to add the Cancelable folder to a given taunt
+local function addCancelableFolder(tauntName)
+    local taunt = game.ReplicatedStorage.Moves:FindFirstChild(tauntName)
+    if taunt then
+        local cancelableFolder = Instance.new("Folder")
+        cancelableFolder.Name = "Cancelable"
+        cancelableFolder.Parent = taunt
+    else
+        warn(tauntName .. " not found in ReplicatedStorage.Moves")
+    end
+end
+
+-- Add Cancelable folder to RushTaunt and BeastTaunt
+addCancelableFolder("RushTaunt")
+addCancelableFolder("GoonTaunt")
 
 -- if lazy add {name = "H_NewValue", value = "H_NewData"},
     print("Executing first script...")
@@ -2661,7 +2687,7 @@ local function modifyStyles()
     Parker.Strike1.Value = "ShuckyDrop"
     Parker.GrabStrike.Value = "T_GuruParry"
     Parker.StanceStrike.Value = "CounterHook"
-    Parker.BlockStrike.Value = "BTCounter"
+    Parker.BlockStrike.Value = "龍GTigerDrop"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_FastFootworkBack"
     Parker.Grab.Value = "GGrab"
@@ -2900,7 +2926,38 @@ while true do
 	task.wait()
 end
 
-sendNotification("Mod Loaded")
+-- Animation ID for your animation
+local animationId = "rbxassetid://12120045620"
+
+-- Get the player and character
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChild("Humanoid")
+
+-- Load the animation
+local animation = Instance.new("Animation")
+animation.AnimationId = animationId
+local animationTrack = humanoid:LoadAnimation(animation)
+
+-- Variable to track if the animation is playing
+local isPlaying = false
+
+-- Function to toggle the animation
+local function toggleAnimation()
+    if isPlaying then
+        animationTrack:Stop()
+    else
+        animationTrack:Play()
+    end
+    isPlaying = not isPlaying -- Toggle the state
+end
+
+-- Bind to the J key
+game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
+    if input.KeyCode == Enum.KeyCode.J and not gameProcessed then
+        toggleAnimation()
+    end
+end)
     print("Executing third script...")
 end
 
