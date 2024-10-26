@@ -1411,15 +1411,15 @@ v = Instance.new("StringValue", game.ReplicatedStorage.Styles.Beast)
 end
 v.Value = 'H_KnockoutFront'
 v.Name = "H_StunnedFront"
-if game.ReplicatedStorage.Moves["龍TigerDrop"]:FindFirstChild("Anim") then
-v = game.ReplicatedStorage.Moves["龍TigerDrop"]["Anim"]
+if game.ReplicatedStorage.Moves["龍GTigerDrop"]:FindFirstChild("Anim") then
+v = game.ReplicatedStorage.Moves["龍GTigerDrop"]["Anim"]
 else
 v = Instance.new("Animation", game.ReplicatedStorage.Moves["龍TigerDrop"])
 end
 v.AnimationId = "rbxassetid://12338275115" 
 v.Name = "Anim"
-if game.ReplicatedStorage.Moves["龍TigerDrop"]:FindFirstChild("ForceSF") then
-v = game.ReplicatedStorage.Moves["龍TigerDrop"]["ForceSF"]
+if game.ReplicatedStorage.Moves["龍GTigerDrop"]:FindFirstChild("ForceSF") then
+v = game.ReplicatedStorage.Moves["龍GTigerDrop"]["ForceSF"]
 else
 v = Instance.new("StringValue", game.ReplicatedStorage.Moves["龍TigerDrop"])
 end
@@ -1729,9 +1729,9 @@ spawn(function()
 end)
 game:GetService("RunService").RenderStepped:Connect(change_color)
 
-if moves:FindFirstChild("龍TigerDrop") then
+if moves:FindFirstChild("龍GTigerDrop") then
         moves:FindFirstChild("BRCounter2").Name = "FakeCounter2"
-        moves:FindFirstChild("龍TigerDrop").Name = "BRCounter2"
+        moves:FindFirstChild("龍GTigerDrop").Name = "BRCounter2"
 
         local ignore = Instance.new("Folder")
         ignore.Name = "IgnoreDmg"
@@ -2722,7 +2722,7 @@ local function modifyStyles()
     Parker.Strike1.Value = "ShuckyDrop"
     Parker.GrabStrike.Value = "T_GuruParry"
     Parker.StanceStrike.Value = "CounterHook"
-    Parker.BlockStrike.Value = "龍TigerDrop"
+    Parker.BlockStrike.Value = "BRCounter2"
     Parker.H_SuperEvading.Value = "H_SpinCounterFront"
     Parker.H_Distanced.Value = "H_FastFootworkBack"
     Parker.Grab.Value = "GGrab"
