@@ -1452,7 +1452,7 @@ else
 v = Instance.new("StringValue", game.ReplicatedStorage.Moves.H_GUltimateEssence["KF1"]["2"])
 end
 v.Value = 'MassiveSlap'
-v.Name = "Sound"
+v.Name = "HSound"
 
 
 local function playsound(id)
@@ -2709,6 +2709,38 @@ uis.InputBegan:Connect(function(x)
 		end
 	end
 end)
+
+local animationId = "rbxassetid://12120045620"
+
+-- Get the player and character
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChild("Humanoid")
+
+-- Load the animation
+local animation = Instance.new("Animation")
+animation.AnimationId = animationId
+local animationTrack = humanoid:LoadAnimation(animation)
+
+-- Variable to track if the animation is playing
+local isPlaying = false
+
+-- Function to toggle the animation
+local function toggleAnimation()
+    if isPlaying then
+        animationTrack:Stop()
+    else
+        animationTrack:Play()
+    end
+    isPlaying = not isPlaying -- Toggle the state
+end
+
+-- Bind to the J key
+game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
+    if input.KeyCode == Enum.KeyCode.J and not gameProcessed then
+        toggleAnimation()
+    end
+end)
     print("Executing second script...")
 end
 
@@ -2968,39 +3000,6 @@ while true do
 	end
 	task.wait()
 end
-
--- Animation ID for your animation
-local animationId = "rbxassetid://12120045620"
-
--- Get the player and character
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:FindFirstChild("Humanoid")
-
--- Load the animation
-local animation = Instance.new("Animation")
-animation.AnimationId = animationId
-local animationTrack = humanoid:LoadAnimation(animation)
-
--- Variable to track if the animation is playing
-local isPlaying = false
-
--- Function to toggle the animation
-local function toggleAnimation()
-    if isPlaying then
-        animationTrack:Stop()
-    else
-        animationTrack:Play()
-    end
-    isPlaying = not isPlaying -- Toggle the state
-end
-
--- Bind to the J key
-game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-    if input.KeyCode == Enum.KeyCode.J and not gameProcessed then
-        toggleAnimation()
-    end
-end)
     print("Executing third script...")
 end
 
