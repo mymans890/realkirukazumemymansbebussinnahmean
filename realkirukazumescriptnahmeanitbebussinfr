@@ -1414,14 +1414,14 @@ v.Name = "H_StunnedFront"
 if game.ReplicatedStorage.Moves["龍GTigerDrop"]:FindFirstChild("Anim") then
 v = game.ReplicatedStorage.Moves["龍GTigerDrop"]["Anim"]
 else
-v = Instance.new("Animation", game.ReplicatedStorage.Moves["龍TigerDrop"])
+v = Instance.new("Animation", game.ReplicatedStorage.Moves["龍GTigerDrop"])
 end
 v.AnimationId = "rbxassetid://11528675185" 
 v.Name = "Anim"
 if game.ReplicatedStorage.Moves["龍GTigerDrop"]:FindFirstChild("ForceSF") then
 v = game.ReplicatedStorage.Moves["龍GTigerDrop"]["ForceSF"]
 else
-v = Instance.new("StringValue", game.ReplicatedStorage.Moves["龍TigerDrop"])
+v = Instance.new("StringValue", game.ReplicatedStorage.Moves["龍GTigerDrop"])
 end
 v.Value = '0.1' 
 v.Name = "ForceSF"
@@ -1446,10 +1446,10 @@ v = Instance.new("NumberValue", game.ReplicatedStorage.Moves["TigerDrop"])
 end
 v.Value = 1 
 v.Name = "AniSpeed"
-if game.ReplicatedStorage.Moves.H_GUltimateEssence.KF1.2:FindFirstChild("HSound") then
-v = game.ReplicatedStorage.Moves.H_GUltimateEssence.KF1.2["HSound"]
+if game.ReplicatedStorage.Moves.H_GUltimateEssence.["KF1"]["2"]:FindFirstChild("HSound") then
+v = game.ReplicatedStorage.Moves.H_GUltimateEssence.["KF1"]["2"]["HSound"]
 else
-v = Instance.new("StringValue", game.ReplicatedStorage.Moves.H_GUltimateEssence.KF1.2)
+v = Instance.new("StringValue", game.ReplicatedStorage.Moves.H_GUltimateEssence.["KF1"].["2"])
 end
 v.Value = 'MassiveSlap'
 v.Name = "Sound"
