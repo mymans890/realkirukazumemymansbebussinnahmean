@@ -1887,6 +1887,7 @@ game.ReplicatedStorage.Moves.BStrike5.Anim.AnimationId = "rbxassetid://760376834
 game.ReplicatedStorage.Moves.B2Strike2.Anim.AnimationId = "rbxassetid://11808830651"
 game.ReplicatedStorage.Moves.B2Strike3.Anim.AnimationId = "rbxassetid://13785070193"
 game.ReplicatedStorage.Moves.BStrike4.Anim.AnimationId = "rbxassetid://13785070193"
+game.ReplicatedStorage.Moves.BRCounter2.Dmg.Value = "5000"
 game.ReplicatedStorage.Moves.GStrike1.Dmg.Value = "80"
 game.ReplicatedStorage.Moves.H_FallenKick.MoveName.Value = "Essence of Football Kicking"
 game.ReplicatedStorage.Moves.H_FallenStomp.MoveName.Value = "Essence of Stomp"
