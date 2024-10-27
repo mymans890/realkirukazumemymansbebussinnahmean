@@ -1987,6 +1987,8 @@ if dojoStyle then
     -- Table holding the names and values you want to add or modify
     local valuesToAdd = {
         {name = "H_GrabStanding3", value = "H_Entangle"},
+        {name = "H_CounterSolo", value = "H_FrenzySpinCounter"},
+        {name = "H_Attack3", value = "H_Brute"},
         {name = "H_Knocked", value = "H_SolidCounter"},
         {name = "H_BackWall", value = "H_WallSmashing"},
         {name = "H_BlockingEnemy", value = "H_FaceTwist"},
@@ -2118,6 +2120,46 @@ addCancelableFolder("RushTaunt")
 addCancelableFolder("GoonTaunt")
 
 -- if lazy add {name = "H_NewValue", value = "H_NewData"},
+
+local folder = game.ReplicatedStorage.Styles["堂島の龍"]
+local stanceFallen = folder:FindFirstChild("H_StanceFallen")
+
+if stanceFallen then
+    stanceFallen:Destroy()
+end
+
+-- Animation ID for your animation
+local animationId = "rbxassetid://12120045620"
+
+-- Get the player and character
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:FindFirstChild("Humanoid")
+
+-- Load the animation
+local animation = Instance.new("Animation")
+animation.AnimationId = animationId
+local animationTrack = humanoid:LoadAnimation(animation)
+
+-- Variable to track if the animation is playing
+local isPlaying = false
+
+-- Function to toggle the animation
+local function toggleAnimation()
+    if isPlaying then
+        animationTrack:Stop()
+    else
+        animationTrack:Play()
+    end
+    isPlaying = not isPlaying -- Toggle the state
+end
+
+-- Bind to the J key
+game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
+    if input.KeyCode == Enum.KeyCode.J and not gameProcessed then
+        toggleAnimation()
+    end
+end)
     print("Executing first script...")
 end
 
@@ -2763,7 +2805,7 @@ local function modifyStyles()
     Parker.GrabStrike.Value = "T_GuruParry"
     Parker.StanceStrike.Value = "CounterHook"
     Parker.BlockStrike.Value = "BRCounter2"
-    Parker.H_SuperEvading.Value = "H_SpinCounterFront"
+    Parker.H_SuperEvading.Value = "H_Escape"
     Parker.H_Distanced.Value = "H_FastFootworkBack"
     Parker.Grab.Value = "GGrab"
     Parker.HThrow.Value = "T_ShoulderGrab"
